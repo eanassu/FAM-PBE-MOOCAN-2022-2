@@ -2,6 +2,7 @@ package br.vemprafam.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,11 +28,28 @@ public class DaoFuncionario {
 	}
 	
 	public void inserirFuncionario( Funcionario funcionario ) {
-		
+		try {
+			String sql = "INSERT INTO FUNCIONARIOS VALUES(?,?,?,?)";
+			PreparedStatement pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, funcionario.getRe());
+			pstmt.setString(2, funcionario.getNome());
+			pstmt.setDate(3, new java.sql.Date(funcionario.getDataAdmissao().getTime()));
+			pstmt.setDouble(4, funcionario.getSalario());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
 	}
 	
 	public void excluirFuncionario(Funcionario funcionario ) {
-		
+		try {
+			String sql = "DELETE FROM FUNCIONARIOS WHERE RE=?";
+			PreparedStatement pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, funcionario.getRe());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}			
 	}
 	
 	public void atualizarFuncionario( Funcionario funcionario ) {
