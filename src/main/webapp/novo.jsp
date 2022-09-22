@@ -7,6 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-Hello World JSP
+Hello World JSP<br/>
+<%-- Comentário JSP --%>
+<%
+String texto = "Texto teste";
+
+out.println(texto);
+System.out.println("Executado!");
+%>
+<br/>
+<%=texto %>
 </body>
 </html>
