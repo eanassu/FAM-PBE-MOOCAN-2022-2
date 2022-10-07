@@ -30,12 +30,13 @@ public class DaoFuncionario {
 	
 	public void inserirFuncionario( Funcionario funcionario ) {
 		try {
-			String sql = "INSERT INTO FUNCIONARIOS VALUES(?,?,?,?)";
+			String sql = "INSERT INTO FUNCIONARIOS VALUES(?,?,?,?,?)";
 			PreparedStatement pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, funcionario.getRe());
 			pstmt.setString(2, funcionario.getNome());
 			pstmt.setDate(3, new java.sql.Date(funcionario.getDataAdmissao().getTime()));
 			pstmt.setDouble(4, funcionario.getSalario());
+			pstmt.setString(5, funcionario.getEmail());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -57,12 +58,14 @@ public class DaoFuncionario {
 	
 	public void atualizarFuncionario( Funcionario funcionario ) {
 		try {
-			String sql = "UPDATE FUNCIONARIOS SET NOME=?,DATAADMISSAO=?,SALARIO=? WHERE RE=?";
+			String sql = "UPDATE FUNCIONARIOS SET NOME=?,DATAADMISSAO=?,SALARIO=?,"
+					+ "EMAIL=? WHERE RE=?";
 			PreparedStatement pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, funcionario.getNome());
 			pstmt.setDate(2, new java.sql.Date(funcionario.getDataAdmissao().getTime()));
 			pstmt.setDouble(3, funcionario.getSalario());
-			pstmt.setInt(4, funcionario.getRe());
+			pstmt.setString(4, funcionario.getEmail());
+			pstmt.setInt(5, funcionario.getRe());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -81,7 +84,8 @@ public class DaoFuncionario {
 				String nome = rs.getString(2);
 				Date dataAdmissao = rs.getDate(3);
 				double salario = rs.getDouble("salario");
-				lista.add(new Funcionario(re,nome,dataAdmissao,salario));
+				String email = rs.getString(5);
+				lista.add(new Funcionario(re,nome,dataAdmissao,salario,email));
 			}
 		} catch ( SQLException e ) {
 			e.printStackTrace();
@@ -97,7 +101,8 @@ public class DaoFuncionario {
 			pstmt.setInt(1, re);
 			ResultSet rs = pstmt.executeQuery();
 			if ( rs.next() ) {
-				return new Funcionario(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDouble(4));
+				return new Funcionario(rs.getInt(1),
+						rs.getString(2),rs.getDate(3),rs.getDouble(4),rs.getString(5));
 			} else {
 				return null;
 			}

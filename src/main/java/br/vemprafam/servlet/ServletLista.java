@@ -45,7 +45,7 @@ public class ServletLista extends HttpServlet {
 				+ "<body>"
 				+ "<table border='1'>"
 				+ "<tr>\r\n"
-				+ "<th>RE</th><th>nome</th><th>data adm.</th><th>salário</th>\r\n"
+				+ "<th>RE</th><th>nome</th><th>data adm.</th><th>salário</th><th>e-mail</th>\r\n"
 				+ "</tr>");
 		
 		for( Funcionario f:lista ) {
@@ -54,6 +54,7 @@ public class ServletLista extends HttpServlet {
 					+ "<td>"+ f.getNome() +"</td>"
 					+ "<td>"+ f.getDataAdmissao() +"</td>"
 					+ "<td>"+ f.getSalario() + "</td>\r\n"
+					+ "<td>"+ f.getEmail() + "</td>\r\n"
 					+ "</tr>");
 		}
 		out.println("</table>\r\n"

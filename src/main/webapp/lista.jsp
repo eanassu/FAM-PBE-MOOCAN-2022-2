@@ -13,6 +13,7 @@
 <table border='1'>
 <tr>
 <th>RE</th><th>nome</th><th>data adm.</th><th>salário</th>
+<th>e-mail</th>
 </tr>
 <%
 DaoFuncionario dao = new DaoFuncionario();
@@ -25,6 +26,7 @@ for( Funcionario f: lista ) {
 <td><%=f.getNome()%></td>
 <td><%=f.getDataAdmissao()%></td>
 <td><%=f.getSalario()%></td>
+<td><%=f.getEmail()%></td>
 </tr>
 <%
 }

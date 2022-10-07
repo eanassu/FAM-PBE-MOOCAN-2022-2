@@ -20,8 +20,9 @@ String dataAdmStr = format.format(f.getDataAdmissao());
 <form action='gravarAlteracao'>
 RE:<input type='text' name='re' value="<%=f.getRe()%>"/><br/>
 nome:<input type='text' name='nome' value="<%=f.getNome()%>"/><br/>
-data de admissão:<input type='text' name='dataAdm' value="<%=dataAdmStr%>"><br/>
-salário:<input type='text' name='salario' value="<%=f.getSalario()%>"><br/>
+data de admissão:<input type='text' name='dataAdm' value="<%=dataAdmStr%>"/><br/>
+salário:<input type='text' name='salario' value="<%=f.getSalario()%>"/><br/>
+e-mail:<input type='text' name='email' value='<%=f.getEmail()%>'/><br/>
 <input type='submit' value='enviar'>
 </form>
 </body>
