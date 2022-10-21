@@ -10,12 +10,13 @@
 <title>Exemplo de Formulário</title>
 </head>
 <body>
-<form action='cadastrarFuncionario'>
+<form action='mvc'>
 RE:<input type='text' name='re'/><br/>
 nome:<input type='text' name='nome'/><br/>
 data de admissão:<fam:campoData id='dataAdm'/><br/>
 salário:<input type='text' name='salario'/><br/>
 e-mail:<input type='text' name='email'/><br/>
+<input type="hidden" name='logica' value='Cadastro'/>
 <input type='submit' value='enviar'/>
 </form>
 <br/><a href='/Projeto'>voltar</a>

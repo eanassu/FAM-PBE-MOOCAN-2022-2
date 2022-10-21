@@ -47,18 +47,8 @@ public class ServletCadastro extends HttpServlet {
 		String email = request.getParameter("email");
 		DaoFuncionario dao = new DaoFuncionario();
 		dao.inserirFuncionario(new Funcionario(re,nome,dataAdmissao,salario,email));
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE html>\r\n"
-				+ "<html>\r\n"
-				+ "<head>\r\n"
-				+ "<meta charset=\"ISO-8859-1\">\r\n"
-				+ "<title>Resultado</title>\r\n"
-				+ "</head>\r\n"
-				+ "<body>\r\n"
-				+ "Funcionário cadastrado\r\n"
-				+ "<br/><a href='/Projeto'>voltar</a>"
-				+ "</body>\r\n"
-				+ "</html>");
+		request.getRequestDispatcher(
+				"funcionario-cadastrado.jsp").forward(request, response);
 	}
 
 	/**
